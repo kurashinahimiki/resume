@@ -1,32 +1,52 @@
-.main_page{
+.main_page {
+  background-color: #ffffff; /* 白的 */
+
   padding-top: 5%;
-  padding-left: 20%;
-  padding-right: 20%;
+  padding-bottom: 5%;
+  padding-left: 5%;  /* 縮小內距文字不貼邊 */
+  padding-right: 5%;
+
+  /*水平置中 */
+  margin: 0 auto;
+
+
+  width: 60%;
+  max-width: 900px; /* 避免在超大螢幕上太寬 */
+  min-width: 320px; /* 避免在小螢幕上太窄 */
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
 }
 
 .header {
   display: flex;
-  justify-content: space-between; /* 名字左照片右 */
-  align-items: center; /* 垂直居中 */
+  justify-content: space-between;
+  /* 名字左照片右 */
+  align-items: center;
+  /* 垂直居中 */
   margin-bottom: 20px;
 }
 
-.title{
-  font-family: 'Roboto',Segoe UI;
+.title {
+  font-family: 'Roboto', Segoe UI;
   color: rgb(46, 8, 117);
 }
 
 .profile-photo {
-  width: 120px;   /* 預留寬度 */
-  height: 120px;  /* 預留高度 */
-  background-color: #ddd; /* 暫時用灰色當佔位符 */
+  width: 120px;
+  /* 預留寬度 */
+  height: 120px;
+  /* 預留高度 */
+  background-color: #ddd;
+  /* 暫時用灰色當佔位符 */
 }
 
 .mid_body {
   display: grid;
   /* 1fr 代表 1 份，3fr 代表 3 份 */
   grid-template-columns: 1fr 3fr;
-  gap: 40px; /* 左右兩欄的間距 可視需求調整 */
+  gap: 40px;
+  /* 左右兩欄的間距 可視需求調整 */
   margin-top: 20px;
 }
 
@@ -36,9 +56,12 @@
   margin-bottom: 10px;
   padding-bottom: 5px;
 }
+
 .side-bar {
-  border-right: 1px solid #ddd; /* 垂直分隔線 */
-  padding-right: 20px; /* 讓內容不要貼著線 */
+  border-right: 1px solid #ddd;
+  /* 垂直分隔線 */
+  padding-right: 20px;
+  /* 讓內容不要貼著線 */
 }
 
 .side-bar p {
@@ -47,14 +70,31 @@
 
 .bottom_body {
   display: flex;
-  justify-content: center; /* 水平置中 */
-  align-items: center;     /* 垂直置中 */
-  text-align: center;      /* 文字置中*/
+  justify-content: center;
+  /* 水平置中 */
+  align-items: center;
+  /* 垂直置中 */
+  text-align: center;
+  /* 文字置中*/
 
-  border-top: 1px solid #ddd; /* 底部水平線 */
+  border-top: 1px solid #ddd;
+  /* 底部水平線 */
   padding-top: 20px;
   margin-top: 10px;
-  min-height: 50px; /* 保底區塊高度 */
+  min-height: 50px;
+  /* 保底區塊高度 */
+}
+
+.lang-item {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Titillium Web', sans-serif;
+  margin-bottom: 5px;
+}
+
+.level {
+  color: #666; /* 讓程度顏色淺一點 做出層次感 */
+  font-size: 0.9em;
 }
 
 
@@ -63,17 +103,38 @@
 // 手機板
 @media (max-width: 768px) {
   .main_page {
-    padding-left: 5%;  /* 縮小兩側留白 增加內容空間 */
+    padding-left: 5%;
+    /* 縮小兩側留白 增加內容空間 */
     padding-right: 5%;
   }
 
   .mid_body {
-    grid-template-columns: 1fr; /* 從雙欄變成單欄 垂直排列 */
+    grid-template-columns: 1fr;
+    /* 從雙欄變成單欄 垂直排列 */
     gap: 20px;
   }
 
   .header {
-    flex-direction: column; /* 名字跟照片改成上下排 */
+    flex-direction: column;
+    /* 名字跟照片改成上下排 */
     align-items: flex-start;
+  }
+
+  .side-bar {
+    border-right: none;
+    /* 手機版取消右邊框 */
+    border-bottom: 1px solid #ddd;
+    /* 下邊框區隔學歷與經歷 */
+    padding-right: 0;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+  }
+
+  .mid_body h3 {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .side-bar p {
+    font-family: 'Titillium Web', sans-serif;
   }
 }
