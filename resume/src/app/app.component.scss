@@ -1,0 +1,79 @@
+.main_page{
+  padding-top: 5%;
+  padding-left: 20%;
+  padding-right: 20%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between; /* 名字左照片右 */
+  align-items: center; /* 垂直居中 */
+  margin-bottom: 20px;
+}
+
+.title{
+  font-family: 'Roboto',Segoe UI;
+  color: rgb(46, 8, 117);
+}
+
+.profile-photo {
+  width: 120px;   /* 預留寬度 */
+  height: 120px;  /* 預留高度 */
+  background-color: #ddd; /* 暫時用灰色當佔位符 */
+}
+
+.mid_body {
+  display: grid;
+  /* 1fr 代表 1 份，3fr 代表 3 份 */
+  grid-template-columns: 1fr 3fr;
+  gap: 40px; /* 左右兩欄的間距 可視需求調整 */
+  margin-top: 20px;
+}
+
+.mid_body h3 {
+  font-family: 'Montserrat';
+  border-bottom: 1px solid rgb(46, 8, 117);
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+}
+.side-bar {
+  border-right: 1px solid #ddd; /* 垂直分隔線 */
+  padding-right: 20px; /* 讓內容不要貼著線 */
+}
+
+.side-bar p {
+  font-family: 'Titillium Web';
+}
+
+.bottom_body {
+  display: flex;
+  justify-content: center; /* 水平置中 */
+  align-items: center;     /* 垂直置中 */
+  text-align: center;      /* 文字置中*/
+
+  border-top: 1px solid #ddd; /* 底部水平線 */
+  padding-top: 20px;
+  margin-top: 10px;
+  min-height: 50px; /* 保底區塊高度 */
+}
+
+
+
+
+// 手機板
+@media (max-width: 768px) {
+  .main_page {
+    padding-left: 5%;  /* 縮小兩側留白 增加內容空間 */
+    padding-right: 5%;
+  }
+
+  .mid_body {
+    grid-template-columns: 1fr; /* 從雙欄變成單欄 垂直排列 */
+    gap: 20px;
+  }
+
+  .header {
+    flex-direction: column; /* 名字跟照片改成上下排 */
+    align-items: flex-start;
+  }
+}
