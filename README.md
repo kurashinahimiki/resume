@@ -1,2 +1,2 @@
 <h1>Resume</h1>
-<label>https://kurashinahimiki.github.io/resume/</label>
+<label target="_blank">https://kurashinahimiki.github.io/resume/</label>
