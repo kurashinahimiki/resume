@@ -32,6 +32,18 @@
   color: rgb(46, 8, 117);
 }
 
+.contact-info a {
+  color: rgb(46, 8, 117);
+  text-decoration: none;   /* 移除預設下劃線 */
+  font-family: 'Open Sans', sans-serif;
+  transition: opacity 0.3s;
+}
+
+.contact-info a:hover {
+  opacity: 0.7; /* 滑鼠移上去時稍微變淡*/
+  text-decoration: underline;
+}
+
 .profile-photo {
   width: 120px;
   /* 預留寬度 */
@@ -66,6 +78,8 @@
 
 .side-bar p {
   font-family: 'Titillium Web';
+  line-height: 1.8;
+  margin-bottom: 8px;
 }
 
 .bottom_body {
@@ -88,19 +102,21 @@
 .lang-item {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-family: 'Titillium Web', sans-serif;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
+  padding: 0 5px;
 }
 
 .level {
-  color: #666; /* 讓程度顏色淺一點 做出層次感 */
+  color: #888; /* 讓程度顏色淺一點 做出層次感 */
   font-size: 0.9em;
 }
 
 
 
 
-// 手機板
+// 手機版
 @media (max-width: 768px) {
   .main_page {
     padding-left: 5%;
@@ -136,5 +152,63 @@
 
   .side-bar p {
     font-family: 'Titillium Web', sans-serif;
+  }
+
+}
+
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  /* 基礎重置：移除背景與邊距 */
+  body {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+  }
+
+  /* 容器尺寸限制：強制 A4 規格 */
+  .main_page {
+    width: 210mm;
+    height: 297mm;
+    margin: 0;
+    padding: 15mm;
+    box-shadow: none;
+    border: none;
+    overflow: hidden;
+    /* 修正列印時內容可能位移的問題 */
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+
+  /* 文字排版：使用 pt 單位更精準 */
+  p, li, span {
+    font-size: 11pt;
+    line-height: 1.4;
+  }
+
+  h1 {
+    font-size: 24pt;
+    margin-bottom: 5mm;
+  }
+
+  h3 {
+    margin-top: 10mm;
+    margin-bottom: 3mm;
+  }
+
+  /* 元素微調 */
+  hr {
+    margin: 5mm 0;
+  }
+
+  /* 強制保留背景色與邊框顏色 (此處保留 !important 是必要的，用於覆蓋瀏覽器預設的省墨模式) */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 }
