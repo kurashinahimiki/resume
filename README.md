@@ -1,2 +1,6 @@
 <h1>Resume</h1>
-<label><a target="_blank">https://kurashinahimiki.github.io/resume/<a></label>
+<p align="left">
+  <a href="https://kurashinahimiki.github.io/resume/" target="_blank">
+    <b>🌐 see resume</b>
+  </a>
+</p>
