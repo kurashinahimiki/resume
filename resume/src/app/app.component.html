@@ -3,86 +3,82 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
 
-<div class="main_page">
+<div class="no-print lang-selector">
+  <button [class.active]="currentLang === 'zh'" (click)="setLanguage('zh')">中文</button>
+  <button [class.active]="currentLang === 'en'" (click)="setLanguage('en')">English</button>
+  <button [class.active]="currentLang === 'jp'" (click)="setLanguage('jp')">日本語</button>
+</div>
+
+<div class="main_page" [class]="currentLang">
   <!-- header -->
   <div class="header">
     <div class="title">
-      <h1>&numsp;YENFENG LEE</h1>
+      <h1>&numsp;{{content.name}}</h1>
       <div class="contact-info">
         <p>📧 <a href="mailto:himikioffice&#64;gmail.com">himikioffice&#64;gmail.com</a></p>
         <p>🔗 <a href="https://github.com/kurashinahimiki" target="_blank">github.com/kurashinahimiki</a></p>
-        <p>📍 Based in Taiwan (Open to Relocation to Japan)</p>
+        <p>📍{{content.position}}</p>
       </div>
     </div>
     <div class="profile-photo">
+      <img src="profile.jpg" alt="photo">
     </div>
   </div>
   <hr>
   <!-- mid body -->
   <div class="mid_body">
     <div class="side-bar">
-      <h3>SKILLS</h3>
-      <p><strong>Languages</strong></p>
+      <h3>{{content.skills}}</h3>
+      <p><strong>{{content.cpu_languages}}</strong></p>
       <p>Java, SQL</p>
       <p>HTML/CSS/TS</p>
       <p>C++, Python (Learning)</p>
-      <br>
 
-      <p><strong>Frameworks</strong></p>
-      <p>Angular, Spring Boot</p> <br>
+      <p><strong>{{content.frameworks}}</strong></p>
+      <p>Angular, Spring Boot</p>
 
-      <p><strong>Databases & Tools</strong></p>
+      <p><strong>{{content.Databases_Tools}}</strong></p>
       <p>MySQL, RESTful API, Git / GitHub, Eclipse, VSCode</p>
 
-      <br>
-      <h3>EDUCATION</h3>
-      <p><strong>Chung Yuan Christian University (CYCU)</strong></p>
-      <p>Bachelor of Electronic Engineering</p>
-      <br>
-      <br>
-      <h3>LANGUAGES</h3>
+      <h3>{{content.education}}</h3>
+      <p><strong>{{content.school}}</strong></p>
+      <p>{{content.department}}</p>
+
+      <h3>{{content.language}}</h3>
       <div class="lang-item">
-        <span>Chinese</span>
-        <span class="level">Native</span>
+        <span>{{content.chinese}}</span>
+        <span class="level">{{content.chinese_level}}</span>
       </div>
       <div class="lang-item">
-        <span>Japanese</span>
+        <span>{{content.japanese}}</span>
         <span class="level">N2</span>
       </div>
       <div class="lang-item">
-        <span>English</span>
+        <span>{{content.english}}</span>
         <span class="level">B1</span>
       </div>
     </div>
 
     <div class="main-content">
-      <h3>PROFILE</h3>
-      <p style="font-family: 'Open Sans', sans-serif; line-height: 1.6;">Java Backend Engineer with full-stack
-        development
-        experience,
-        specializing in building scalable APIs and automating manual processes.
-        Proven ability to work in agile teams and passionate about leveraging technology to improve user efficiency.
-        Currently advancing Japanese proficiency to N1 to excel in a global technical environment.</p>
-      <h3>EXPERIENCE</h3>
-      <p style="font-family: 'Lato';"><strong>Java Full-Stack Development Program</strong> | Group Project: GOGOBUY</p>
+      <h3>{{content.profile}}</h3>
+      <p [innerHTML]="content.profile_content"></p>
 
-      <ul style="font-family: 'Open Sans', sans-serif; line-height: 1.5;">
-        <li>Designed and implemented RESTful APIs for store management and sales statistics using <strong>Java</strong>.
-        </li>
-        <li>Engineered an <strong>Image Recognition System</strong> to automate store data entry, reducing manual input
-          time significantly.</li>
-        <li>Collaborated with front-end developers using <strong>Angular</strong> to ensure seamless data integration.
-        </li>
+      <h3>{{content.experience}}</h3>
+      <p><span [innerHTML]="content.exp_title"></span></p>
+      <ul>
+        @for (item of content.exp_list; track $index) {
+        <li [innerHTML]="item"></li>
+        }
       </ul>
-      <h3>PROJECTS</h3>
-      <p style="font-family: 'Lato';"><strong>GOGOBUY - Groupbuy Platform Optimization</strong></p>
 
-      <ul style="font-family: 'Open Sans', sans-serif; line-height: 1.5;">
-        <li><strong>Backend Focus:</strong> Developed sales analytics modules providing real-time data insights.</li>
-        <li><strong>Innovation:</strong> Integrated <strong>OCR/Object Detection</strong> to streamline merchant
-          onboarding.</li>
-        <li><strong>Tools:</strong> Eclipse, Git/GitHub, MySQL.</li>
+      <h3>{{content.projects}}</h3>
+      <p><span [innerHTML]="content.project_title"></span></p>
+      <ul>
+        @for (item of content.project_list; track $index) {
+        <li [innerHTML]="item"></li>
+        }
       </ul>
 
     </div>

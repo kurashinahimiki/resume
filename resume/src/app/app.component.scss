@@ -1,7 +1,7 @@
 .main_page {
   background-color: #ffffff; /* 白的 */
 
-  padding-top: 5%;
+  padding-top: 3%;
   padding-bottom: 5%;
   padding-left: 5%;  /* 縮小內距文字不貼邊 */
   padding-right: 5%;
@@ -24,7 +24,9 @@
   /* 名字左照片右 */
   align-items: center;
   /* 垂直居中 */
-  margin-bottom: 20px;
+  margin-bottom: 5px;
+  padding-left: 8%;
+  padding-right: 10%;
 }
 
 .title {
@@ -32,11 +34,26 @@
   color: rgb(46, 8, 117);
 }
 
-.contact-info a {
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  // padding-left: 5%;
+}
+
+/* 針對內部的 a 標籤與 span/p 標籤 */
+.contact-info a,
+.contact-info span,
+.contact-info p {
   color: rgb(46, 8, 117);
-  text-decoration: none;   /* 移除預設下劃線 */
+  text-decoration: none;
   font-family: 'Open Sans', sans-serif;
   transition: opacity 0.3s;
+
+  line-height: 2;
+  margin: 0;
+  display: flex;
+  align-items: center;
 }
 
 .contact-info a:hover {
@@ -69,17 +86,73 @@
   padding-bottom: 5px;
 }
 
-.side-bar {
-  border-right: 1px solid #ddd;
-  /* 垂直分隔線 */
-  padding-right: 20px;
-  /* 讓內容不要貼著線 */
+/* 基礎設定：針對所有文字 */
+.main_page {
+  font-variant-ligatures: none;
+  -webkit-font-smoothing: antialiased;
 }
 
-.side-bar p {
-  font-family: 'Titillium Web';
-  line-height: 1.8;
-  margin-bottom: 8px;
+/* --- 繁體中文版本 (ZH) --- */
+.main_page.zh {
+  font-family: 'Noto Sans TC', "Microsoft JhengHei", sans-serif;
+  line-height: 3;
+
+  .main-content {
+    letter-spacing: 0.02em;
+  }
+}
+
+/* --- 日文版本 (JP) --- */
+.main_page.jp {
+  font-family: 'Noto Sans JP', "Meiryo", "MS PGothic", sans-serif;
+  line-height: 3;
+
+  strong {
+    font-weight: 700;
+  }
+}
+
+/* --- 英文版本 (EN) --- */
+.main_page.en {
+  font-family: 'Lato', 'Open Sans', 'Roboto', sans-serif;
+  line-height: 2.5;
+}
+
+
+.main_page .side-bar {
+
+
+  h3 {
+    margin-top: 24px;
+    margin-bottom: 10px;
+    border-bottom: 1.5px solid #2e0875;
+    padding-bottom: 8px;
+  }
+
+
+  p strong {
+    display: inline-block;
+    margin-top: 8px;
+    margin-bottom: 4px;
+  }
+
+
+  p {
+    margin-bottom: 4px;
+    line-height: 1.5;
+  }
+
+
+  .lang-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+
+    .level {
+      color: #777;
+      font-size: 0.9em;
+    }
+  }
 }
 
 .bottom_body {
@@ -113,7 +186,54 @@
   font-size: 0.9em;
 }
 
+.lang-selector {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 5px;
+  z-index: 1000;
 
+  button {
+    padding: 6px 12px;
+    border: 1px solid #2e0875;
+    background: white;
+    color: #2e0875;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s;
+
+    &:hover {
+      background: #f0f0f5;
+    }
+
+    // 當前選中按鈕的樣式
+    &.active {
+      background: #2e0875;
+      color: white;
+    }
+  }
+}
+
+.profile-photo {
+  width: 150px;
+  height: 194px;
+  /* 強制維持寬度不被 flex 壓縮 */
+  flex-shrink: 0;
+  /* 如果圖片還沒出來先用灰色頂替 */
+  background-color: #f0f0f0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+}
 
 
 // 手機版
@@ -173,7 +293,7 @@
   /* 容器尺寸限制：強制 A4 規格 */
   .main_page {
     width: 210mm;
-    height: 297mm;
+    min-height: 297mm;
     margin: 0;
     padding: 15mm;
     box-shadow: none;
@@ -188,7 +308,8 @@
   /* 文字排版：使用 pt 單位更精準 */
   p, li, span {
     font-size: 11pt;
-    line-height: 1.4;
+    // line-height: 1.4;
+    line-height: inherit;  //跟隨設定
   }
 
   h1 {
@@ -197,18 +318,22 @@
   }
 
   h3 {
-    margin-top: 10mm;
-    margin-bottom: 3mm;
+    margin-top: 30px;
+    margin-bottom: 12px;
+    line-height: 1.2;
   }
 
-  /* 元素微調 */
-  hr {
-    margin: 5mm 0;
-  }
+  // /* 元素微調 */
+  // hr {
+  //   margin: 5mm 0;
+  // }
 
   /* 強制保留背景色與邊框顏色 (此處保留 !important 是必要的，用於覆蓋瀏覽器預設的省墨模式) */
   * {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
+  }
+  .no-print {
+    display: none !important;
   }
 }
